@@ -1,0 +1,222 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  name      String
+  password  String
+  role      String
+  phone     String?
+  avatar    String?
+  bio       String?
+  department String?
+  joinDate  DateTime @default(now())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  settings  UserSettings?
+}
+
+model UserSettings {
+  id                  String  @id @default(uuid())
+  userId              String  @unique
+  user                User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  emailNotifications  Boolean @default(true)
+  smsNotifications    Boolean @default(false)
+  pushNotifications   Boolean @default(true)
+  weeklyReports       Boolean @default(true)
+  twoFactorAuth       Boolean @default(false)
+}
+
+model Student {
+  id           String   @id @default(uuid())
+  name         String
+  email        String   @unique
+  grade        String
+  class        String   @default("Not Assigned")
+  gpa          Float
+  status       String   @default("active")
+  attendance   Int
+  focus        Int      @default(0)
+  engagement   Int      @default(0)
+  notetaking   Int      @default(0)
+  deviceUsage  Int      @default(0)
+  behavior     String   @default("good")
+  overallScore Int      @default(0)
+  phone        String?
+  avatar       String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  enrollments  Enrollment[]
+  attentionLogs AttentionLog[]
+}
+
+model Teacher {
+  id            String   @id @default(uuid())
+  name          String
+  email         String   @unique
+  subject       String
+  teachingHours Float    @default(0)
+  engagement    Int      @default(0)
+  coverage      Int      @default(0)
+  punctuality   Int      @default(0)
+  resourceUse   Int      @default(0)
+  profDev       Int      @default(0)
+  behavior      String   @default("good")
+  overallScore  Int      @default(0)
+  phone         String?
+  status        String   @default("active")
+  rating        Float    @default(0)
+  avatar        String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  classes       Class[]
+}
+
+model Class {
+  id          String   @id @default(uuid())
+  name        String
+  subject     String
+  schedule    String
+  room        String
+  teacherId   String
+  teacher     Teacher  @relation(fields: [teacherId], references: [id], onDelete: Cascade)
+  students    Int      @default(0)
+  behavior    String   @default("good")
+  winRate     Int      @default(0)
+  avgScore    Float    @default(0)
+  advice      String?
+  avgGrade    Float    @default(0)
+  attendance  Int      @default(0)
+  status      String   @default("active")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  enrollments Enrollment[]
+  assignments Assignment[]
+  liveStream  LiveStream?
+}
+
+model Enrollment {
+  id        String   @id @default(uuid())
+  studentId String
+  classId   String
+  student   Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  class     Class    @relation(fields: [classId], references: [id], onDelete: Cascade)
+  grade     String?
+  attendance Int     @default(0)
+  createdAt DateTime @default(now())
+  
+  @@unique([studentId, classId])
+}
+
+model Assignment {
+  id        String   @id @default(uuid())
+  classId   String
+  class     Class    @relation(fields: [classId], references: [id], onDelete: Cascade)
+  title     String
+  dueDate   DateTime
+  submitted Int      @default(0)
+  total     Int
+  createdAt DateTime @default(now())
+}
+
+model LiveStream {
+  id         String   @id @default(uuid())
+  classId    String   @unique
+  class      Class    @relation(fields: [classId], references: [id], onDelete: Cascade)
+  streamUrl  String
+  thumbnail  String?
+  isLive     Boolean  @default(false)
+  viewers    Int      @default(0)
+  startTime  String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Camera {
+  id         String   @id @default(uuid())
+  name       String
+  location   String
+  rtspUrl    String
+  httpUrl    String?
+  username   String
+  password   String
+  resolution String   @default("1080p")
+  fps        Int      @default(30)
+  status     String   @default("active")
+  lastSeen   DateTime @default(now())
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model EnvironmentSensor {
+  id          String   @id @default(uuid())
+  location    String
+  room        String
+  temperature Float
+  humidity    Int
+  co2         Int
+  lighting    Int
+  noise       Int
+  status      String   @default("normal")
+  timestamp   DateTime @default(now())
+  createdAt   DateTime @default(now())
+}
+
+model AttentionLog {
+  id          String   @id @default(uuid())
+  studentId   String
+  student     Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  attention   Int
+  emotion     String
+  x           Float
+  y           Float
+  timestamp   DateTime @default(now())
+}
+
+model VoiceCommand {
+  id          String   @id @default(uuid())
+  command     String
+  response    String
+  accuracy    Float
+  userId      String?
+  timestamp   DateTime @default(now())
+}
+
+model PredictiveAnalytics {
+  id              String   @id @default(uuid())
+  type            String
+  prediction      String
+  confidence      Float
+  targetDate      DateTime
+  actualOutcome   String?
+  metadata        String?
+  createdAt       DateTime @default(now())
+}
+
+model ComfortData {
+  id          String   @id @default(uuid())
+  room        String
+  temperature Float
+  humidity    Float
+  noise       Float
+  light       Float
+  status      String
+  timestamp   DateTime @default(now())
+}
+
+model Analytics {
+  id        String   @id @default(uuid())
+  type      String
+  metric    String
+  value     Float
+  metadata  String?
+  timestamp DateTime @default(now())
+}
