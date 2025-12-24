@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 
 export default function LiveStreamWS() {
   const videoRef = useRef(null);
@@ -7,67 +7,10 @@ export default function LiveStreamWS() {
   const mediaSourceRef = useRef(null);
   const sourceBufferRef = useRef(null);
   const queueRef = useRef([]);
+  const mountedRef = useRef(true);
   const [status, setStatus] = useState('disconnected');
 
-  const mountedRef = useRef(true);
-
-  useEffect(() => {
-    mountedRef.current = true;
-    connectStream();
-    return () => {
-      mountedRef.current = false;
-      if (wsRef.current) {
-        wsRef.current.close();
-        wsRef.current = null;
-      }
-    };
-  }, []);
-
-  const connectStream = () => {
-    const video = videoRef.current;
-    
-    if ('MediaSource' in window) {
-      const mediaSource = new MediaSource();
-      mediaSourceRef.current = mediaSource;
-      video.src = URL.createObjectURL(mediaSource);
-
-      mediaSource.addEventListener('sourceopen', () => {
-        try {
-          const sourceBuffer = mediaSource.addSourceBuffer('video/mp2t; codecs="avc1.42E01E"');
-          sourceBufferRef.current = sourceBuffer;
-          sourceBuffer.mode = 'sequence';
-          
-          sourceBuffer.addEventListener('updateend', () => {
-            if (queueRef.current.length > 0 && !sourceBuffer.updating) {
-              const nextChunk = queueRef.current.shift();
-              try {
-                sourceBuffer.appendBuffer(nextChunk);
-              } catch (err) {
-                console.error('Buffer append error:', err);
-              }
-            }
-            
-            if (sourceBuffer.buffered.length > 0) {
-              const bufferedEnd = sourceBuffer.buffered.end(0);
-              const currentTime = video.currentTime;
-              if (bufferedEnd - currentTime > 30) {
-                try {
-                  sourceBuffer.remove(0, currentTime - 5);
-                } catch (e) {}
-              }
-            }
-          });
-
-          connectWebSocket();
-        } catch (err) {
-          console.error('SourceBuffer error:', err);
-          setStatus('error');
-        }
-      });
-    }
-  };
-
-  const connectWebSocket = () => {
+  const connectWebSocket = useCallback(() => {
     const ws = new WebSocket('ws://localhost:3000/api/stream-ws');
     wsRef.current = ws;
     ws.binaryType = 'arraybuffer';
@@ -111,7 +54,63 @@ export default function LiveStreamWS() {
         }, 3000);
       }
     };
-  };
+  }, []);
+
+  const connectStream = useCallback(() => {
+    const video = videoRef.current;
+    
+    if ('MediaSource' in window) {
+      const mediaSource = new MediaSource();
+      mediaSourceRef.current = mediaSource;
+      video.src = URL.createObjectURL(mediaSource);
+
+      mediaSource.addEventListener('sourceopen', () => {
+        try {
+          const sourceBuffer = mediaSource.addSourceBuffer('video/mp2t; codecs="avc1.42E01E"');
+          sourceBufferRef.current = sourceBuffer;
+          sourceBuffer.mode = 'sequence';
+          
+          sourceBuffer.addEventListener('updateend', () => {
+            if (queueRef.current.length > 0 && !sourceBuffer.updating) {
+              const nextChunk = queueRef.current.shift();
+              try {
+                sourceBuffer.appendBuffer(nextChunk);
+              } catch (err) {
+                console.error('Buffer append error:', err);
+              }
+            }
+            
+            if (sourceBuffer.buffered.length > 0) {
+              const bufferedEnd = sourceBuffer.buffered.end(0);
+              const currentTime = video.currentTime;
+              if (bufferedEnd - currentTime > 30) {
+                try {
+                  sourceBuffer.remove(0, currentTime - 5);
+                } catch (e) {}
+              }
+            }
+          });
+
+          connectWebSocket();
+        } catch (err) {
+          console.error('SourceBuffer error:', err);
+          setStatus('error');
+        }
+      });
+    }
+  }, [connectWebSocket]);
+
+  useEffect(() => {
+    mountedRef.current = true;
+    connectStream();
+    return () => {
+      mountedRef.current = false;
+      if (wsRef.current) {
+        wsRef.current.close();
+        wsRef.current = null;
+      }
+    };
+  }, [connectStream]);
 
   return (
     <div className="min-h-screen bg-gray-900">

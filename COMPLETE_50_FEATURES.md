@@ -1,4 +1,4 @@
-# 🚀 50 SHOCKING UNIQUE FEATURES - IntelliSchool System
+# 🚀 50 SHOCKING UNIQUE FEATURES - Intelligent School System
 
 ## ✅ COMPLETE FEATURE LIST (150+ TOTAL FEATURES)
 

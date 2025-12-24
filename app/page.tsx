@@ -23,82 +23,85 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       <nav className="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
-        <div className="max-w-7xl mx-auto px-6 py-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
           <div className="flex justify-between items-center">
-            <Link href="/" className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center shadow-md">
-                <FaGraduationCap className="text-white text-lg" />
+            <Link href="/" className="flex items-center gap-2 sm:gap-3">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-indigo-600 flex items-center justify-center shadow-md">
+                <FaGraduationCap className="text-white text-base sm:text-lg" />
               </div>
-              <span className="text-lg font-bold text-slate-900">IntelliSchool</span>
+              <span className="text-base sm:text-lg font-bold text-slate-900">Intelligent School</span>
             </Link>
-            <div className="flex items-center gap-8">
-              <Link href="#features" className="text-[15px] text-slate-600 hover:text-indigo-600 font-medium">Features</Link>
-              <Link href="#solutions" className="text-[15px] text-slate-600 hover:text-indigo-600 font-medium">Solutions</Link>
-
-              <button onClick={() => setShowLogin(true)} className="px-5 py-2 bg-indigo-600 text-white text-[15px] font-medium rounded-lg hover:bg-indigo-700 shadow-md">
+            <div className="hidden md:flex items-center gap-4 lg:gap-8">
+              <Link href="#features" className="text-sm sm:text-[15px] text-slate-600 hover:text-indigo-600 font-medium">Features</Link>
+              <Link href="#solutions" className="text-sm sm:text-[15px] text-slate-600 hover:text-indigo-600 font-medium">Solutions</Link>
+              <button onClick={() => setShowLogin(true)} className="px-4 sm:px-5 py-2 bg-indigo-600 text-white text-sm sm:text-[15px] font-medium rounded-lg hover:bg-indigo-700 shadow-md">
                 Sign In
               </button>
             </div>
+            <button onClick={() => setShowLogin(true)} className="md:hidden px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-lg">
+              Sign In
+            </button>
           </div>
         </div>
       </nav>
 
-      <section className="bg-gradient-to-b from-slate-50 to-white py-20 px-6">
+      <section className="bg-gradient-to-b from-slate-50 to-white py-12 sm:py-16 lg:py-20 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-100 text-indigo-700 rounded-full text-[14px] font-semibold mb-6">
+          <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-indigo-100 text-indigo-700 rounded-full text-xs sm:text-[14px] font-semibold mb-4 sm:mb-6">
             <FaBell className="text-indigo-600" />
-            Trusted by 500+ Educational Institutions Worldwide
+            <span className="hidden sm:inline">Trusted by 500+ Educational Institutions Worldwide</span>
+            <span className="sm:hidden">500+ Schools Trust Us</span>
           </div>
-          <h1 className="text-5xl font-bold text-slate-900 mb-5 leading-tight">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4 sm:mb-5 leading-tight px-4">
             Next-Generation School<br />Management Platform
           </h1>
-          <p className="text-lg text-slate-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Comprehensive AI-powered monitoring, real-time analytics, and intelligent insights for modern educational institutions. Transform your school with cutting-edge IoT technology.
+          <p className="text-base sm:text-lg text-slate-600 mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed px-4">
+            Comprehensive AI-powered monitoring, real-time analytics, and intelligent insights for modern educational institutions.
           </p>
-          <div className="flex gap-4 justify-center">
-            <button onClick={() => setShowLogin(true)} className="px-7 py-3 bg-indigo-600 text-white text-[15px] font-semibold rounded-lg hover:bg-indigo-700 shadow-lg inline-flex items-center gap-2">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
+            <button onClick={() => setShowLogin(true)} className="px-6 sm:px-7 py-2.5 sm:py-3 bg-indigo-600 text-white text-sm sm:text-[15px] font-semibold rounded-lg hover:bg-indigo-700 shadow-lg inline-flex items-center justify-center gap-2">
               Get Started Free <FaArrowRight />
             </button>
-            <button className="px-7 py-3 bg-white border-2 border-slate-300 text-slate-700 text-[15px] font-semibold rounded-lg hover:border-indigo-600 hover:text-indigo-600">
+            <button className="px-6 sm:px-7 py-2.5 sm:py-3 bg-white border-2 border-slate-300 text-slate-700 text-sm sm:text-[15px] font-semibold rounded-lg hover:border-indigo-600 hover:text-indigo-600">
               Watch Demo
             </button>
           </div>
           
-          <div className="grid grid-cols-4 gap-8 mt-16 max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mt-10 sm:mt-16 max-w-4xl mx-auto px-4">
             <div className="text-center">
-              <p className="text-4xl font-bold text-indigo-600 mb-2">250+</p>
-              <p className="text-[15px] text-slate-600">Features</p>
+              <p className="text-2xl sm:text-3xl lg:text-4xl font-bold text-indigo-600 mb-1 sm:mb-2">250+</p>
+              <p className="text-xs sm:text-sm lg:text-[15px] text-slate-600">Features</p>
             </div>
             <div className="text-center">
-              <p className="text-4xl font-bold text-indigo-600 mb-2">98%</p>
-              <p className="text-[15px] text-slate-600">AI Accuracy</p>
+              <p className="text-2xl sm:text-3xl lg:text-4xl font-bold text-indigo-600 mb-1 sm:mb-2">98%</p>
+              <p className="text-xs sm:text-sm lg:text-[15px] text-slate-600">AI Accuracy</p>
             </div>
             <div className="text-center">
-              <p className="text-4xl font-bold text-indigo-600 mb-2">24/7</p>
-              <p className="text-[15px] text-slate-600">Monitoring</p>
+              <p className="text-2xl sm:text-3xl lg:text-4xl font-bold text-indigo-600 mb-1 sm:mb-2">24/7</p>
+              <p className="text-xs sm:text-sm lg:text-[15px] text-slate-600">Monitoring</p>
             </div>
             <div className="text-center">
-              <p className="text-4xl font-bold text-indigo-600 mb-2">500+</p>
-              <p className="text-[15px] text-slate-600">Schools</p>
+              <p className="text-2xl sm:text-3xl lg:text-4xl font-bold text-indigo-600 mb-1 sm:mb-2">500+</p>
+              <p className="text-xs sm:text-sm lg:text-[15px] text-slate-600">Schools</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="features" className="py-20 px-6 bg-white">
+      <section id="features" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-14">
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">Powerful Features</h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">Everything you need to manage and monitor your educational institution</p>
+          <div className="text-center mb-10 sm:mb-14">
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-3 sm:mb-4">Powerful Features</h2>
+            <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto px-4">Everything you need to manage and monitor your educational institution</p>
           </div>
           
-          <div className="grid grid-cols-3 gap-6">
-            <div className="bg-white p-7 rounded-xl border border-slate-200 hover:border-indigo-300 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 rounded-lg bg-indigo-100 flex items-center justify-center mb-5">
-                <FaRobot className="text-indigo-600 text-xl" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            <div className="bg-white p-5 sm:p-7 rounded-xl border border-slate-200 hover:border-indigo-300 hover:shadow-lg transition-all">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-indigo-100 flex items-center justify-center mb-4 sm:mb-5">
+                <FaRobot className="text-indigo-600 text-lg sm:text-xl" />
               </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">AI-Powered Analytics</h3>
-              <p className="text-[15px] text-slate-600 leading-relaxed">Advanced machine learning algorithms analyze student behavior patterns and performance metrics in real-time</p>
+              <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-2">AI-Powered Analytics</h3>
+              <p className="text-sm sm:text-[15px] text-slate-600 leading-relaxed">Advanced machine learning algorithms analyze student behavior patterns and performance metrics in real-time</p>
             </div>
 
             <div className="bg-white p-7 rounded-xl border border-slate-200 hover:border-indigo-300 hover:shadow-lg transition-all">
@@ -168,14 +171,14 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="solutions" className="py-20 px-6 bg-slate-50">
+      <section id="solutions" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 bg-slate-50">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-14">
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">Complete Solutions</h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">Comprehensive tools for every aspect of school management</p>
+          <div className="text-center mb-10 sm:mb-14">
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-3 sm:mb-4">Complete Solutions</h2>
+            <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto px-4">Comprehensive tools for every aspect of school management</p>
           </div>
           
-          <div className="grid grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             <Link href="/analytics/student" className="group bg-white p-7 rounded-xl border border-slate-200 hover:border-indigo-600 hover:shadow-xl transition-all">
               <FaUserGraduate className="text-indigo-600 text-3xl mb-4" />
               <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-indigo-600">Student Analytics</h3>
@@ -235,55 +238,69 @@ export default function Home() {
 
 
 
-      <section className="py-20 px-6 bg-indigo-600">
+      <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 bg-indigo-600">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-white mb-4">Ready to Transform Your School?</h2>
-          <p className="text-lg text-indigo-100 mb-8">Join 500+ institutions using IntelliSchool for smarter education management</p>
-          <button onClick={() => setShowLogin(true)} className="px-8 py-3 bg-white text-indigo-600 text-[15px] font-semibold rounded-lg hover:shadow-2xl transition-all inline-flex items-center gap-2">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3 sm:mb-4 px-4">Ready to Transform Your School?</h2>
+          <p className="text-base sm:text-lg text-indigo-100 mb-6 sm:mb-8 px-4">Join 500+ institutions using Intelligent School for smarter education management</p>
+          <button onClick={() => setShowLogin(true)} className="px-6 sm:px-8 py-2.5 sm:py-3 bg-white text-indigo-600 text-sm sm:text-[15px] font-semibold rounded-lg hover:shadow-2xl transition-all inline-flex items-center gap-2">
             Start Free Trial <FaArrowRight />
           </button>
         </div>
       </section>
 
-      <footer className="bg-slate-900 text-white py-12 px-6">
+      <footer className="bg-slate-900 text-white py-8 sm:py-12 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-4 gap-10 mb-10">
-            <div>
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-9 h-9 rounded-lg bg-indigo-600 flex items-center justify-center">
-                  <FaGraduationCap className="text-white text-base" />
+          <div className="grid grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-10 mb-8 sm:mb-10">
+            <div className="col-span-2 lg:col-span-1">
+              <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-indigo-600 flex items-center justify-center">
+                  <FaGraduationCap className="text-white text-sm sm:text-base" />
                 </div>
-                <span className="text-lg font-bold">IntelliSchool</span>
+                <span className="text-base sm:text-lg font-bold">Intelligent School</span>
               </div>
-              <p className="text-[15px] text-slate-400">AI-powered school management for modern education</p>
+              <p className="text-sm sm:text-[15px] text-slate-400 mb-3">AI-powered school management for modern education</p>
+              <div className="space-y-1 text-sm text-slate-400">
+                <p>Kigali, Rwanda</p>
+                <p>+250 791 904 250</p>
+                <p className="text-indigo-400">info@intelligentschool.rw</p>
+                <p className="text-indigo-400">www.intelligentschool.rw</p>
+              </div>
             </div>
             <div>
-              <h4 className="text-[15px] font-semibold mb-3">Product</h4>
-              <ul className="space-y-2 text-[15px] text-slate-400">
+              <h4 className="text-sm sm:text-[15px] font-semibold mb-2 sm:mb-3">Product</h4>
+              <ul className="space-y-1.5 sm:space-y-2 text-sm sm:text-[15px] text-slate-400">
                 <li><Link href="#features" className="hover:text-white">Features</Link></li>
                 <li><Link href="#solutions" className="hover:text-white">Solutions</Link></li>
                 <li><Link href="/dashboard" className="hover:text-white">Dashboard</Link></li>
               </ul>
             </div>
             <div>
-              <h4 className="text-[15px] font-semibold mb-3">Company</h4>
-              <ul className="space-y-2 text-[15px] text-slate-400">
+              <h4 className="text-sm sm:text-[15px] font-semibold mb-2 sm:mb-3">Company</h4>
+              <ul className="space-y-1.5 sm:space-y-2 text-sm sm:text-[15px] text-slate-400">
                 <li><Link href="#" className="hover:text-white">About</Link></li>
                 <li><Link href="#" className="hover:text-white">Contact</Link></li>
                 <li><Link href="#" className="hover:text-white">Careers</Link></li>
               </ul>
             </div>
             <div>
-              <h4 className="text-[15px] font-semibold mb-3">Legal</h4>
-              <ul className="space-y-2 text-[15px] text-slate-400">
+              <h4 className="text-sm sm:text-[15px] font-semibold mb-2 sm:mb-3">Legal</h4>
+              <ul className="space-y-1.5 sm:space-y-2 text-sm sm:text-[15px] text-slate-400">
                 <li><Link href="#" className="hover:text-white">Privacy</Link></li>
                 <li><Link href="#" className="hover:text-white">Terms</Link></li>
                 <li><Link href="#" className="hover:text-white">Security</Link></li>
               </ul>
             </div>
+            <div>
+              <h4 className="text-sm sm:text-[15px] font-semibold mb-2 sm:mb-3">Support</h4>
+              <ul className="space-y-1.5 sm:space-y-2 text-sm sm:text-[15px] text-slate-400">
+                <li><Link href="#" className="hover:text-white">Help Center</Link></li>
+                <li><Link href="#" className="hover:text-white">Documentation</Link></li>
+                <li><Link href="#" className="hover:text-white">API</Link></li>
+              </ul>
+            </div>
           </div>
-          <div className="border-t border-slate-800 pt-6 text-center">
-            <p className="text-[15px] text-slate-400">© 2025 IntelliSchool. Ministry of Education Approved System. All rights reserved.</p>
+          <div className="border-t border-slate-800 pt-4 sm:pt-6 text-center">
+            <p className="text-xs sm:text-[15px] text-slate-400">© 2025 Intelligent School. Ministry of Education Approved System. All rights reserved.</p>
           </div>
         </div>
       </footer>

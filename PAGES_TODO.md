@@ -1,4 +1,4 @@
-# Additional Pages - IntelliSchool
+# Additional Pages - Intelligent School
 
 ## Pages to Create
 
@@ -27,7 +27,7 @@ Create file: `app/contact/page.tsx`
 ## Navigation
 All pages should include:
 - Fixed top navigation bar
-- Logo with IntelliSchool branding
+- Logo with Intelligent School branding
 - Links: Home, About, Features, Contact
 - Consistent footer
 

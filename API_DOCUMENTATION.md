@@ -1,4 +1,4 @@
-# API Routes Documentation - IntelliSchool System
+# API Routes Documentation - Intelligent School System
 
 ## 🚀 Complete API Endpoints
 

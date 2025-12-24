@@ -37,10 +37,10 @@ export default function ExecutiveDashboard() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-50 flex items-center justify-center">
+      <div className="min-h-screen bg-slate-950 flex items-center justify-center">
         <div className="text-center">
-          <div className="w-16 h-16 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-slate-600">Loading dashboard...</p>
+          <div className="w-16 h-16 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-slate-400">Loading dashboard...</p>
         </div>
       </div>
     );
@@ -95,22 +95,22 @@ export default function ExecutiveDashboard() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-50">
+    <div className="min-h-screen bg-slate-950">
       <Sidebar />
 
       <div className="lg:ml-72">
-        <header className="sticky top-0 z-40 bg-white/80 backdrop-blur-xl border-b border-slate-200 shadow-sm">
+        <header className="sticky top-0 z-40 bg-slate-900/80 backdrop-blur-xl border-b border-slate-800 shadow-lg">
           <div className="px-4 sm:px-6 lg:px-8 py-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
                 <button 
                   onClick={() => setSidebarOpen(!sidebarOpen)}
-                  className="lg:hidden p-2 rounded-xl hover:bg-slate-100 transition-colors"
+                  className="lg:hidden p-2 rounded-xl hover:bg-slate-800 transition-colors"
                 >
-                  <FaBars className="text-xl text-slate-600" />
+                  <FaBars className="text-xl text-slate-400" />
                 </button>
                 <div>
-                  <h1 className="text-2xl sm:text-3xl font-bold text-indigo-600">
+                  <h1 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent">
                     AI-Powered School Monitoring
                   </h1>
                   <p className="text-sm text-slate-500 mt-0.5 hidden sm:block">
@@ -120,17 +120,17 @@ export default function ExecutiveDashboard() {
               </div>
               
               <div className="flex items-center space-x-2 sm:space-x-3">
-                <div className="hidden md:flex items-center space-x-2 px-4 py-2 bg-slate-100 rounded-xl">
-                  <FaCalendarAlt className="text-slate-500 text-sm" />
-                  <span className="text-sm font-medium text-slate-700">Academic Year 2024-25</span>
+                <div className="hidden md:flex items-center space-x-2 px-4 py-2 bg-slate-800/50 border border-slate-700 rounded-xl">
+                  <FaCalendarAlt className="text-slate-400 text-sm" />
+                  <span className="text-sm font-medium text-slate-300">Academic Year 2024-25</span>
                 </div>
                 
-                <button className="relative p-2.5 rounded-xl hover:bg-slate-100 transition-colors">
-                  <FaBell className="text-lg text-slate-600" />
+                <button className="relative p-2.5 rounded-xl hover:bg-slate-800 transition-colors border border-slate-800">
+                  <FaBell className="text-lg text-slate-400" />
                   <span className="absolute top-1 right-1 w-2 h-2 bg-rose-500 rounded-full animate-pulse"></span>
                 </button>
                 
-                <button className="hidden sm:flex items-center gap-2 px-4 py-2.5 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition-all duration-200 font-medium text-sm">
+                <button className="hidden sm:flex items-center gap-2 px-4 py-2.5 bg-indigo-600 text-white rounded-xl hover:bg-indigo-500 transition-all duration-200 font-medium text-sm shadow-lg shadow-indigo-500/20">
                   <FaDownload />
                   <span className="hidden md:inline">Export</span>
                 </button>
@@ -144,15 +144,15 @@ export default function ExecutiveDashboard() {
           <div className="mb-8">
             <div className="flex items-center justify-between mb-6">
               <div>
-                <h2 className="text-2xl font-bold text-slate-900 flex items-center">
-                  <FaUserGraduate className="mr-3 text-indigo-600" />
+                <h2 className="text-2xl font-bold text-white flex items-center">
+                  <FaUserGraduate className="mr-3 text-indigo-400" />
                   Student Analytics
                 </h2>
-                <p className="text-slate-600 text-sm">Real-time monitoring of student behavior and engagement</p>
+                <p className="text-slate-400 text-sm mt-1">Real-time monitoring of student behavior and engagement</p>
               </div>
               <Link 
                 href="/analytics/student"
-                className="px-4 py-2 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition-all text-sm font-medium"
+                className="px-4 py-2 bg-indigo-600 text-white rounded-xl hover:bg-indigo-500 transition-all text-sm font-medium shadow-lg shadow-indigo-500/20"
               >
                 View Details
               </Link>
@@ -163,20 +163,20 @@ export default function ExecutiveDashboard() {
                 <Link
                   key={item.title}
                   href="/analytics/student"
-                  className="bg-white rounded-2xl p-6 border border-slate-200 hover:shadow-xl transition-all cursor-pointer group"
+                  className="bg-slate-900 rounded-2xl p-6 border border-slate-800 hover:border-indigo-500/50 hover:shadow-xl hover:shadow-indigo-500/10 transition-all cursor-pointer group"
                 >
-                  <div className="w-14 h-14 rounded-xl bg-indigo-50 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                    <item.icon className="text-2xl text-indigo-600" />
+                  <div className="w-14 h-14 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-indigo-500/20 transition-all">
+                    <item.icon className="text-2xl text-indigo-400" />
                   </div>
-                  <h3 className="text-sm font-bold text-slate-900 mb-2">{item.title}</h3>
+                  <h3 className="text-sm font-semibold text-slate-400 mb-2">{item.title}</h3>
                   <div className="flex items-end justify-between mb-3">
-                    <span className="text-3xl font-bold text-slate-900">{item.value}</span>
-                    <span className="text-xs font-semibold px-2 py-1 rounded-full bg-indigo-50 text-indigo-600">
+                    <span className="text-3xl font-bold text-white">{item.value}</span>
+                    <span className="text-xs font-semibold px-2 py-1 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
                       {item.status}
                     </span>
                   </div>
-                  <div className="w-full bg-slate-100 rounded-full h-2">
-                    <div className="h-2 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-600" style={{ width: item.value }}></div>
+                  <div className="w-full bg-slate-800 rounded-full h-2">
+                    <div className="h-2 rounded-full bg-gradient-to-r from-indigo-500 to-violet-500" style={{ width: item.value }}></div>
                   </div>
                 </Link>
               ))}
@@ -187,15 +187,15 @@ export default function ExecutiveDashboard() {
           <div className="mb-8">
             <div className="flex items-center justify-between mb-6">
               <div>
-                <h2 className="text-2xl font-bold text-slate-900 flex items-center">
-                  <FaChalkboardTeacher className="mr-3 text-indigo-600" />
+                <h2 className="text-2xl font-bold text-white flex items-center">
+                  <FaChalkboardTeacher className="mr-3 text-indigo-400" />
                   Teacher Analytics
                 </h2>
-                <p className="text-slate-600 text-sm">Monitor teaching effectiveness and classroom management</p>
+                <p className="text-slate-400 text-sm mt-1">Monitor teaching effectiveness and classroom management</p>
               </div>
               <Link 
                 href="/analytics/teacher"
-                className="px-4 py-2 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition-all text-sm font-medium"
+                className="px-4 py-2 bg-indigo-600 text-white rounded-xl hover:bg-indigo-500 transition-all text-sm font-medium shadow-lg shadow-indigo-500/20"
               >
                 View Details
               </Link>
@@ -206,20 +206,20 @@ export default function ExecutiveDashboard() {
                 <Link
                   key={item.title}
                   href="/analytics/teacher"
-                  className="bg-white rounded-2xl p-6 border border-slate-200 hover:shadow-xl transition-all cursor-pointer group"
+                  className="bg-slate-900 rounded-2xl p-6 border border-slate-800 hover:border-indigo-500/50 hover:shadow-xl hover:shadow-indigo-500/10 transition-all cursor-pointer group"
                 >
-                  <div className="w-14 h-14 rounded-xl bg-indigo-50 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                    <item.icon className="text-2xl text-indigo-600" />
+                  <div className="w-14 h-14 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-indigo-500/20 transition-all">
+                    <item.icon className="text-2xl text-indigo-400" />
                   </div>
-                  <h3 className="text-sm font-bold text-slate-900 mb-2">{item.title}</h3>
+                  <h3 className="text-sm font-semibold text-slate-400 mb-2">{item.title}</h3>
                   <div className="flex items-end justify-between mb-3">
-                    <span className="text-3xl font-bold text-slate-900">{item.value}</span>
-                    <span className="text-xs font-semibold px-2 py-1 rounded-full bg-indigo-50 text-indigo-600">
+                    <span className="text-3xl font-bold text-white">{item.value}</span>
+                    <span className="text-xs font-semibold px-2 py-1 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
                       {item.status}
                     </span>
                   </div>
-                  <div className="w-full bg-slate-100 rounded-full h-2">
-                    <div className="h-2 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-600" style={{ width: typeof item.value === 'string' && item.value.includes('%') ? item.value : '100%' }}></div>
+                  <div className="w-full bg-slate-800 rounded-full h-2">
+                    <div className="h-2 rounded-full bg-gradient-to-r from-indigo-500 to-violet-500" style={{ width: typeof item.value === 'string' && item.value.includes('%') ? item.value : '100%' }}></div>
                   </div>
                 </Link>
               ))}
@@ -230,15 +230,15 @@ export default function ExecutiveDashboard() {
           <div className="mb-8">
             <div className="flex items-center justify-between mb-6">
               <div>
-                <h2 className="text-2xl font-bold text-slate-900 flex items-center">
-                  <FaThermometerHalf className="mr-3 text-indigo-600" />
+                <h2 className="text-2xl font-bold text-white flex items-center">
+                  <FaThermometerHalf className="mr-3 text-indigo-400" />
                   Environment Monitoring
                 </h2>
-                <p className="text-slate-600 text-sm">Real-time IoT sensor data for optimal learning conditions</p>
+                <p className="text-slate-400 text-sm mt-1">Real-time IoT sensor data for optimal learning conditions</p>
               </div>
               <Link 
                 href="/analytics/comfort"
-                className="px-4 py-2 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition-all text-sm font-medium"
+                className="px-4 py-2 bg-indigo-600 text-white rounded-xl hover:bg-indigo-500 transition-all text-sm font-medium shadow-lg shadow-indigo-500/20"
               >
                 View Details
               </Link>
@@ -249,19 +249,19 @@ export default function ExecutiveDashboard() {
                 <Link
                   key={item.title}
                   href="/analytics/comfort"
-                  className="bg-white rounded-2xl p-6 border border-slate-200 hover:shadow-xl transition-all cursor-pointer group"
+                  className="bg-slate-900 rounded-2xl p-6 border border-slate-800 hover:border-indigo-500/50 hover:shadow-xl hover:shadow-indigo-500/10 transition-all cursor-pointer group"
                 >
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <item.icon className={`text-2xl ${item.color}`} />
+                    <div className="w-14 h-14 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center group-hover:scale-110 group-hover:bg-indigo-500/20 transition-all">
+                      <item.icon className="text-2xl text-indigo-400" />
                     </div>
                   </div>
-                  <h3 className="text-sm font-bold text-slate-900 mb-3">{item.title}</h3>
-                  <p className="text-2xl font-bold text-slate-900 mb-2">{item.value}</p>
+                  <h3 className="text-sm font-semibold text-slate-400 mb-3">{item.title}</h3>
+                  <p className="text-2xl font-bold text-white mb-2">{item.value}</p>
                   <span className={`text-xs font-semibold px-3 py-1 rounded-full capitalize ${
-                    item.status === 'optimal' ? 'bg-indigo-100 text-indigo-700' :
-                    item.status === 'good' ? 'bg-indigo-100 text-indigo-700' :
-                    'bg-slate-100 text-slate-700'
+                    item.status === 'optimal' ? 'bg-indigo-500/10 text-indigo-400 border border-indigo-500/20' :
+                    item.status === 'good' ? 'bg-indigo-500/10 text-indigo-400 border border-indigo-500/20' :
+                    'bg-slate-800 text-slate-400 border border-slate-700'
                   }`}>
                     {item.status}
                   </span>
@@ -271,25 +271,25 @@ export default function ExecutiveDashboard() {
           </div>
 
           {/* Implementation Steps */}
-          <div className="bg-slate-50 rounded-3xl p-8 border border-slate-200">
-            <h2 className="text-3xl font-bold text-slate-900 mb-3 text-center">How It Works</h2>
-            <p className="text-slate-600 text-center mb-10 max-w-2xl mx-auto">
+          <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8">
+            <h2 className="text-3xl font-bold text-white mb-3 text-center">How It Works</h2>
+            <p className="text-slate-400 text-center mb-10 max-w-2xl mx-auto">
               Our AI-powered IoT system seamlessly integrates into your school environment in three simple steps
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {implementationSteps.map((step) => (
-                <div key={step.step} className="bg-white rounded-2xl p-8 border border-slate-200 hover:shadow-2xl transition-all group">
+                <div key={step.step} className="bg-slate-950 border border-slate-800 rounded-2xl p-8 hover:border-indigo-500/50 hover:shadow-2xl hover:shadow-indigo-500/10 transition-all group">
                   <div className="flex items-center justify-between mb-6">
-                    <span className="text-5xl font-bold text-slate-200 group-hover:text-slate-300 transition-colors">
+                    <span className="text-5xl font-bold text-slate-800 group-hover:text-slate-700 transition-colors">
                       {step.step}
                     </span>
-                    <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${step.color} flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg`}>
+                    <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${step.color} flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg shadow-indigo-500/20`}>
                       <step.icon className="text-white text-3xl" />
                     </div>
                   </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-3">{step.title}</h3>
-                  <p className="text-slate-600 leading-relaxed">{step.description}</p>
+                  <h3 className="text-xl font-bold text-white mb-3">{step.title}</h3>
+                  <p className="text-slate-400 leading-relaxed">{step.description}</p>
                 </div>
               ))}
             </div>

@@ -1,4 +1,4 @@
-# IntelliSchool IoT Monitoring System - Complete Feature List
+# Intelligent School IoT Monitoring System - Complete Feature List
 
 ## ✅ FRONTEND COMPLETED - 50+ FEATURES
 
@@ -396,5 +396,5 @@ npx prisma generate
 ---
 
 **Document Created:** 2025
-**System:** IntelliSchool IoT Monitoring System
+**System:** Intelligent School IoT Monitoring System
 **Status:** Frontend Complete - Ready for Backend Integration

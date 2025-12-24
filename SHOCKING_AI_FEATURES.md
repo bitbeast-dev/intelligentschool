@@ -1,4 +1,4 @@
-# 🚀 SHOCKING AI-POWERED FEATURES - IntelliSchool
+# 🚀 SHOCKING AI-POWERED FEATURES - Intelligent School
 
 ## 🔥 REVOLUTIONARY FEATURES THAT WILL BLOW MINDS
 
@@ -116,7 +116,7 @@ People will be BLOWN AWAY by the 3D classroom that looks like a video game with 
 - ❌ No AI assistance
 - ❌ 2D interfaces only
 
-### IntelliSchool System:
+### Intelligent School System:
 - ✅ AI-powered real-time heatmaps
 - ✅ Voice-activated AI assistant
 - ✅ 3D spatial visualization
@@ -288,5 +288,5 @@ All features are:
 ---
 
 **Created:** 2025
-**System:** IntelliSchool IoT Monitoring System
+**System:** Intelligent School IoT Monitoring System
 **Status:** READY TO SHOCK THE WORLD 🚀
